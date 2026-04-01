@@ -1,36 +1,81 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="en">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockForge - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+</head>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+<body>
+    <div class="bg-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" aria-hidden="true"></div>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+    <div class="app-shell">
+    <div class="sidebar">
+        <div class="logo">
+            <span class="brand-badge"><i class="bi bi-stack"></i></span>
+            <div class="brand-text">
+                <span class="brand-title">StockForge</span>
+                <span class="brand-subtitle">Inventory Studio</span>
+            </div>
         </div>
-    </body>
+        <nav class="nav flex-column">
+            <a class="nav-link active" href="{{ route('dashboard') }}">
+                <i class="bi bi-grid-fill me-2"></i> Dashboard
+            </a>
+
+            <a class="nav-link" href="">
+                <i class="bi bi-people me-2"></i> Products
+            </a>
+
+            <a class="nav-link" href="">
+                <i class="bi bi-folder-fill me-2"></i> Suppliers
+            </a>
+            <a class="nav-link" href="">
+                <i class="bi bi-person-gear me-2"></i> Purchase Orders
+            </a>
+            <a class="nav-link" href="">
+                <i class="bi bi-person-gear me-2"></i> Reports
+            </a>
+            <a class="nav-link" href="">
+                <i class="bi bi-person-gear me-2"></i> Users
+            </a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="top-nav d-flex justify-content-between align-items-center">
+            <div class="links">
+                <a href="#" class="pill-link active">Overview</a>
+                <a href="#" class="pill-link">Reports</a>
+            </div>
+            <div class="user-profile">
+                <div class="profile-avatar">
+                    {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                </div>
+                <div class="profile-meta">
+                    <span class="profile-name">{{ auth()->user()->name }}</span>
+                    <span class="profile-role">{{ ucfirst(auth()->user()->role) }}</span>
+                </div>
+                <form method="POST" action="{{ route('logout') }}" class="profile-logout-form">
+                    @csrf
+                    <button type="submit" class="profile-logout-btn">
+                        <i class="bi bi-box-arrow-right me-1"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>

@@ -56,8 +56,8 @@ class User extends Authenticatable
     public function stock_movements(){
         return $this->hasMany(StockMovement::class);
     }
-    public function stock_adjustment_requests(){
-        return $this->hasMany(StockAdjustmentRequest::class);
+    public function stock_adjustment(){
+        return $this->hasMany(StockAdjustment::class);
     }
     public function purchaseOrder(){
         return $this->hasMany(PurchaseOrder::class);
