@@ -16,6 +16,7 @@ class Product extends Model
         'category_id',
         'supplier_id',
         'image',
+        'created_by'
     ];
     public function user(){
         return $this->belongsTo(User::class,'created_by');

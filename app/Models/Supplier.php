@@ -11,6 +11,7 @@ class Supplier extends Model
         'contact_email',
         'phone',
         'address',
+        'created_by'
     ];
     public function users(){
         return $this->belongsTo(User::class,'created_by');
