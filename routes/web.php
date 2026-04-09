@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('products',[ProductController::class,'index'])->name('product.index');
     Route::get('product/create',[ProductController::class,'create'])->name('product.create');
     Route::post('product/store',[ProductController::class,'store'])->name('product.store');
+    Route::get('product/{product}/show',[ProductController::class,'show'])->name('product.show');
     Route::get('product/{product}/edit',[ProductController::class,'edit'])->name('product.edit');
     Route::put('product/{product}/update',[ProductController::class,'update'])->name('product.update');
     Route::delete('product/{product}/destroy',[ProductController::class,'destroy'])->name('product.destroy');
@@ -52,6 +54,12 @@ Route::middleware('auth')->group(function () {
     Route::get('supplier/{supplier}/edit',[SupplierController::class,'edit'])->name('supplier.edit');
     Route::put('supplier/{supplier}/update',[SupplierController::class,'update'])->name('supplier.update');
     Route::delete('supplier/{supplier}/destroy',[SupplierController::class,'destroy'])->name('supplier.destroy');
+
+    // purchase order
+    Route::get('purchase-orders',[PurchaseOrderController::class,'index'])->name('purchaseOrder.index');
+    Route::get('purchase-order/create',[PurchaseOrderController::class,'create'])->name('purchaseOrder.create');
+    Route::post('purchase-order/store',[PurchaseOrderController::class,'store'])->name('purchaseOrder.store');
+    Route::get('purchase-order/{purchaseOrder}/show',[PurchaseOrderController::class,'show'])->name('purchaseOrder.show');
 });
 
 require __DIR__.'/auth.php';

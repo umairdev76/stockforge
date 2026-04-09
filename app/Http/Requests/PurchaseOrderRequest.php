@@ -26,6 +26,10 @@ class PurchaseOrderRequest extends FormRequest
             'supplier_id' => 'required|exists:suppliers,id',
             'ordered_at' => 'required|date',
             'received_at' => 'nullable|date|after_or_equal:ordered_at',
+            'items' => 'required|array|min:1',
+            'items.*.product_id' => 'required|exists:products,id',
+            'items.*.quantity' => 'required|integer|min:1',
+            'items.*.price' => 'required|numeric|min:0',
         ];
     }
 }

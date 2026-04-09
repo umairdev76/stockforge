@@ -12,6 +12,7 @@ class PurchaseOrder extends Model
         'total_amount',
         'ordered_at',
         'received_at',
+        'created_by'
     ];
     public function user(){
         return $this->belongsTo(User::class,'created_by');

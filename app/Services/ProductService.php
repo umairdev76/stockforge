@@ -55,3 +55,4 @@ class ProductService
         return $product->delete();
     }
 }
+?>

@@ -39,7 +39,7 @@
                 <a class="nav-link" href="{{ route('category.index') }}">
                     <i class="bi bi-truck me-2"></i> Categories
                 </a>
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('purchaseOrder.index') }}">
                     <i class="bi bi-cart-check me-2"></i> Purchase Orders
                 </a>
                 <a class="nav-link" href="">

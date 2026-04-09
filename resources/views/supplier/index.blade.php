@@ -36,7 +36,7 @@
                                 <i class="bi bi-envelope me-1"></i> {{ $supplier->contact_email }}
                             </a>
                         </td>
-                        <td><span class="text-muted">{{ $supplier->phone }}</span></td>
+                        <td><span class="text-muted">{{ $supplier->phone ?? 'N/A' }}</span></td>
                         <td>
                             <span class="text-muted small" title="{{ $supplier->address }}">
                                 {{ Str::limit($supplier->address, 30) }}

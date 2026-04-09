@@ -91,7 +91,7 @@
                         <td class="fw-bold text-dark">${{ number_format($product->price, 2) }}</td>
                         <td class="pe-4">
                             <div class="d-flex justify-content-end gap-2">
-                                <a href="" class="btn btn-sm btn-light border" title="View">
+                                <a href="{{ route('product.show',$product->id) }}" class="btn btn-sm btn-light border" title="View">
                                     <i class="bi bi-eye"></i>
                                 </a>
                                 <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm btn-light border" title="Edit">
